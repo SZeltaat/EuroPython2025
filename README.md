@@ -56,8 +56,62 @@ Also prepared and presented a lightning talk for the first time, which was a fun
 
 Here are some of the interesting talks I attended:
 
+### Keynote van Savannah Bailey: [You don’t have to be a compiler engineer to work on Python](https://ep2025.europython.eu/session/you-dont-have-to-be-a-compiler-engineer-to-work-on-python)
+
+Resources: 
+- [slides](Assets/kn/Savannah-Bailey.pdf)
+- [The home of Python’s code. Follow issues, submit 
+PRs, or just watch the repo to learn.](http://github.com/python/cpython)
+- [ Docs proposing/explaining major Python changes 
+— how and why things work the way they do.](http://peps.python.org)
+- [Where high-level discussion happens on features, 
+governance, packaging, and ideas.](http://discuss.python.org)
+- [ Everything you need to start contributing: setup, 
+tools, triage process, testing, and more.](http://devguide.python.org)
 
 
-## Have fun and learn
+Take aways:
+- Once self-taught developer, now a core python developer.
+- Triaging issues is a great way to contribute:
+    - Reproducing issues
+    - Finding minimum reproducers 
+    - Helping categorize issues
+    - Suggesting potential ﬁxes
+- Updating docs and improving test coverage is also a great way to contribute.
+- Do it scared ✨
+
+
+### [Teamwork makes the dream work](https://ep2025.europython.eu/session/teamwork-makes-the-dream-work)
+
+Resources: 
+- [slides](https://preludetech.github.io/pres-teamwork-europy-2025/)
+- [The culture map book](https://www.bol.com/nl/nl/f/culture-map/9300000110083228/): Decoding How People Think, Lead, and Get Things Done Across Cultures.
+- [On measuring software development productivity](https://www.youtube.com/watch?v=yuUBZ1pByzM)
+- [On feedback cycles](https://www.youtube.com/watch?v=Oip7ufMm2Vk)
+
+Thoughts:
+- What does good teamwork mean to you?
+- Softwate development is a team sport.
+    - Skilfully pass the ball and set the next person up for success.
+- Put principles above processes.
+- Ball passing in software development:
+    - Pull requests: make a PR skilfully!
+    - Code reviews: give feedback skilfully!
+    - Apply feedback skilfully!
+    - Ask for help skilfully!
+    - Receive help skilfully!
+    - Share status regularly!
+    - To err is human!
+    - To grow is human!
+- Good teamwork is good business.
+- [Google’s Project Aristotle](https://psychsafety.com/googles-project-aristotle/) found that psychological safety is the most important factor for high-performing teams. Definitely read the article!
+
+
+## Fun Insights & Highlights
 
 [Take the Python Quiz](https://mathspp.com/blog/python-quiz-europython-2025-edition)
+
+Get familiar with the Pac-Man rule
+
+![The Pac-Man Rule](Assets/Other%20resources/the-pac-man-rule.png)
+
