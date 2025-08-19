@@ -56,7 +56,7 @@ Also prepared and presented a lightning talk for the first time, which was a fun
 
 Here are some of the interesting talks I attended:
 
-### Keynote: [You don’t have to be a compiler engineer to work on Python](https://ep2025.europython.eu/session/you-dont-have-to-be-a-compiler-engineer-to-work-on-python)
+### Keynote: [You don’t have to be a compiler engineer to work on Python](https://ep2025.europython.eu/session/you-dont-have-to-be-a-compiler-engineer-to-work-on-python) by Savannah Bailey
 
 Resources: 
 - [Slides](Assets/kn/Savannah-Bailey.pdf)
@@ -161,21 +161,180 @@ Take aways:
     - It should be clean, flexible, and easy to change.
 - Complexity is not about how many keys I have to press – it’s about how difficult it is to reason about the consequences of what I’m doing.
 
+### Keynote: [Why it took 4 years to get a lock files specification](https://ep2025.europython.eu/session/why-it-took-4-years-to-get-a-lock-files-specification) by Brett Cannon
 
+Resource: 
+- [Slides](https://opensource.snarky.ca/Talks/2025/EuroPython/Slides)
+- [PEP 751 – A file format to record Python dependencies for installation reproducibility](https://peps.python.org/pep-0751/)
+- [pylock.toml standard](https://packaging.python.org/en/latest/specifications/pylock-toml/)
+
+Thoughts and take aways:
+#### Packaging and distribution
+- Source distribution (sdist) is the source code of your project. Its format is:
+    {project-name}-{version}.tar.gz
+- Wheel distribution (wheel) also contains the source code, but bunch of metadata and compiled files. It's a zip file that gets copied "as is" to the environment. Its format is:
+    {project-name}-{version}-{python-tag}-{abi-tag}-{platform-tag}.whl
+- Please, please, please always include wheel distribution in your releases when pushing to PyPI.
+#### Pyproject.toml
+- pyproject.toml should at least contain:
+    - [project] section with:
+        - name
+        - version
+    - [build-system] section with:
+        - requires
+        - build-backend
+- Don't do upperbounds on your dependencies in pyproject.toml, unless you have a very good reason to do so.
+- Use environment markers to specify dependencies for different environments (e.g. for older Python versions).
+#### Lock file
+- You can have pylock.*.toml file for different purposes, e.g. one for all the newest versions of your dependencies and one for all the oldest versions of your dependencies.
+- uv can both create and install from pylock.toml files.
+
+
+### Talk: [Intuition vs. Reality: Surprising Truths in Python Performance](https://ep2025.europython.eu/session/intuition-vs-reality-surprising-truths-in-python-performance)
+
+Resources:
+- [Slides](https://ahaslides.com/codspeed)
+
+Thoughts and take aways:
+- Performance matters, because:
+    - Cost savings
+    - Sustainability
+    - User experience and adoption
+    - Competitive advantage
+
+Lessons learned:
+Below we handle a series of cases with the same question: Which one is faster?
+
+- ➕ First case, sum(generator) vs len(list comprehension):
+    - sum(1 for x in arr if x % 2 == 0)
+    - len([x for x in arr if x % 2 == 0])
+
+    - Answer: Context switching between the generator and the list comprehension takes time, so the list comprehension is faster. It uses however much more memory (x10_000).
+
+- 🔡 Second case, concatanating strings with .join() or with +:
+    - ''.join(strings)
+    - for s in strings: concatanated += s 
+    
+    - Answer: While using +=, the string is copied into a new larger string instance every time, which is very inefficient. So .join() is much faster. Join pre-allocates the full string size and copies each string once.
+    - Built-in functions are usually well optimized, so use them whenever possible.
+
+- 🗝️ Third case, list comprehension vs map():
+    - [x * 2 for x in data]
+    - list(map(lambda x: x * 2, data))
+
+    - Answer: map() requires a context switch in each iteration to the lambda function (setup, pass arguments and teardown). So eventhough map() is well optimized in C, This operation is faster with list comprehension.
+
+- 🔁 Fourth case, calculating factorial with recursion vs stack appraoch:
+    - def factorial_recursive(n):
+        if n == 0:
+            return 1
+        return n * factorial_recursive(n - 1)
+
+    - def factorial_stack(n):
+        stack = []
+        result = 1
+        while n > 0:
+            stack.append(n)
+            n -= 1
+        while stack:
+            result *= stack.pop()
+        return result
+
+    - Answer: The recursive approach has a lot of overhead due to function calls (pushing frames) and context switching, so the stack approach is faster.
+
+- 🦀 Fifth case, getting x squared in python vs a Rust function:
+    - x * x
+    - calling rust_square(x) using Rust import from pyo3
+
+    - Answer: This is a real simple operation and Python is very fast at it, so the Rust function is not faster.
+    - The overhead of calling the Rust function and converting the types is too high.
+
+- 🦀 Sixth case, Rust fibonacci vs python fibonacci:
+    
+    - Answer: in Rust, this runs as a native cpu code, purely algorithmic. It is also faster that CPython interpreter bytecode execution. So the Rust version is much faster.
+
+- 🦀 Seventh case, Binary search in Python vs. Rust:
+    - in both cases, a list of 10_000 sorted random integers is passed.
+
+    - Answer: Transforming a python list to Rust's Vec is an O(n) operation, while the binary search is O(log n). So the Rust version becomes slower slower and as the list size increases.
+
+- 🦀 Eighth case, Binary search in Python vs. Rust:
+    - Now, we pass a pyo3 list to the Rust function and only access log(n) elements in the list directly from memory (so no conversion to Vec).
+
+    - Answer: This is much faster, because we avoid the O(n) conversion to Vec and only access the elements directly from memory. So the Rust version is much faster.
+
+Interesting tool:
+- [p99](p99.chat) a free performance analysis tool in the browser.
+
+
+### Talk: [Running every street in Paris with Python and PostGIS](https://ep2025.europython.eu/session/running-every-street-in-paris-with-python-and-postgis)
+#TODO
+
+
+### Talk: [Choosing Between Free Threading and Async](https://ep2025.europython.eu/session/choosing-between-free-threading-and-async)
+#TODO
+
+### Talk: [Performance improvements in 3.14 and maybe 3.15](https://ep2025.europython.eu/session/performance-improvements-in-3-14-and-maybe-3-15) by Mark Shannon
+#TODO
+
+
+### Talk: [Continuous Documentation: basics and advanced techniques](https://ep2025.europython.eu/session/continuous-documentation-basics-and-advanced-techniques)
+#TODO
+
+
+### Keynote: [Behind the scenes of FastAPI and friends for developers and builders](https://ep2025.europython.eu/session/behind-the-scenes-of-fastapi-and-friends-for-developers-and-builders)
+#TODO
+
+### Talk: [What comes after Rust in the Python ecosystem?](https://ep2025.europython.eu/session/what-comes-after-rust-in-the-python-ecosystem)
+#TODO
+
+
+### Talk: [What does = do?](https://ep2025.europython.eu/session/what-does-do)
+#TODO
+
+### Talk: [When in practice is Python performance an issue? Facts and myths.](https://ep2025.europython.eu/session/when-in-practice-is-python-performance-an-issue-facts-and-myths)
+#TODO
+
+### Talk: [Broken __slots__ are a silent performance killer—Let's fix them!](https://ep2025.europython.eu/session/broken-slots-are-a-silent-performance-killer-let-s-fix-them)
+#TODO
+
+## Cool talks to check out later:
+### [Let's talk: Communication & Consensus Building in Open-Source](https://ep2025.europython.eu/session/let-s-talk-communication-consensus-building-in-open-source)
+Amazing talk about organizing (open source) projects, governance, and communication.
+- [Slides](https://euro2025.thath.net/)
+
+
+
+
+## Lightning Talks
 ### Lightnig talk: How to say "No" more easily:
 - Rule#1: Don't say "Yes" unless it's been 24 hours since the request.
 - Rule#2: Estimate the time, energy and the cost. Then multiply it by 4. Alternatively: make an optimistic estimate, make a pessimistic estimate, then sum them up!
-- Rule#3: Future you is gonna at least as busy as present you.
+- Rule#3: Future you is gonna be at least as busy as present you.
 - Rule#4: Tell your loved one(s) that you are going to say "No" to them by saying "Yes" to the oppurtunity.
 - Rule#5: The "honor to be asked" is a trap. Don't fall for it.
 
+### Lightning talk: [How to say PyPI]:
+- It's Py (Pie) P (Pee) I (Eye) 😋
 
+
+
+
+## Sessions
 
 ### Session: [AI discussion panel](https://ep2025.europython.eu/session/ai-discussion-panel)
 
 Key take aways:
 - AI is a tool, not a replacement for human creativity.
 - No AI expert can predict the future. Stop forecasting and definitely stop panicking.
+
+
+### Session: [CPython Core Development Panel](https://ep2025.europython.eu/session/cpython-core-development-panel)
+#TODO
+
+## "Python: the Documentary"
+#TODO
+
 
 
 ## Fun Insights & Highlights
