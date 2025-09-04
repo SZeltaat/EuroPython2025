@@ -15,7 +15,7 @@ Mostly the tech stack we use at WSP: uv, ruff, mypy, pytest, pre-commit, ...
 
 Got to play with streamlit a bit, which was fun.
 
-Interesting take aways:
+#### Interesting take aways:
 
 - [pydoit](https://pydoit.org/) for task management and cli automation
 - [uv custom ca certificates](https://docs.astral.sh/uv/concepts/authentication/#custom-ca-certificates) for possible certificate problems
@@ -37,7 +37,7 @@ Course material: [mighty_dot.zip](Assets/ws3/mighty_dot.zip)
 
 Very very interesting and well presented workshop by Mike Müller.
 
-Take aways:
+#### Take aways:
 
 - A deep dive into properties and descriptors, also alternative ways to implement them.
 - How and when to use them? What are the pitfalls?
@@ -58,8 +58,9 @@ Here are some of the interesting talks I attended:
 
 ### Keynote: [You don’t have to be a compiler engineer to work on Python](https://ep2025.europython.eu/session/you-dont-have-to-be-a-compiler-engineer-to-work-on-python) by Savannah Bailey
 
-Resources: 
+#### Resources: 
 - [Slides](Assets/kn/Savannah-Bailey.pdf)
+- [Youtube](https://www.youtube.com/watch?v=WGXXxGLBVF4)
 - [The home of Python’s code. Follow issues, submit 
 PRs, or just watch the repo to learn.](http://github.com/python/cpython)
 - [ Docs proposing/explaining major Python changes 
@@ -70,7 +71,7 @@ governance, packaging, and ideas.](http://discuss.python.org)
 tools, triage process, testing, and more.](http://devguide.python.org)
 
 
-Take aways:
+#### Take aways:
 - Once self-taught developer, now a core python developer.
 - Triaging issues is a great way to contribute:
     - Reproducing issues
@@ -81,16 +82,60 @@ Take aways:
 - Do it scared ✨
 
 
+### Keynote: [Why it took 4 years to get a lock files specification](https://ep2025.europython.eu/session/why-it-took-4-years-to-get-a-lock-files-specification) by Brett Cannon
+
+#### Resources:
+- [Slides](https://opensource.snarky.ca/Talks/2025/EuroPython/Slides)
+- [PEP 751 – A file format to record Python dependencies for installation reproducibility](https://peps.python.org/pep-0751/)
+- [pylock.toml standard](https://packaging.python.org/en/latest/specifications/pylock-toml/)
+
+#### Thoughts and take aways:
+##### Packaging and distribution
+- Source distribution (sdist) is the source code of your project. Its format is:
+    {project-name}-{version}.tar.gz
+- Wheel distribution (wheel) also contains the source code, but bunch of metadata and compiled files. It's a zip file that gets copied "as is" to the environment. Its format is:
+    {project-name}-{version}-{python-tag}-{abi-tag}-{platform-tag}.whl
+- Please, please, please always include wheel distribution in your releases when pushing to PyPI.
+##### Pyproject.toml
+- pyproject.toml should at least contain:
+    - [project] section with:
+        - name
+        - version
+    - [build-system] section with:
+        - requires
+        - build-backend
+- Don't do upperbounds on your dependencies in pyproject.toml, unless you have a very good reason to do so.
+- Use environment markers to specify dependencies for different environments (e.g. for older Python versions).
+##### Lock file
+- You can have pylock.*.toml file for different purposes, e.g. one for all the newest versions of your dependencies and one for all the oldest versions of your dependencies.
+- uv can both create and install from pylock.toml files.
+
+
+### Keynote: [Behind the scenes of FastAPI and friends for developers and builders](https://ep2025.europython.eu/session/behind-the-scenes-of-fastapi-and-friends-for-developers-and-builders) by Sebastián Ramírez
+This is a must watch! Every minute of it is gold 🪙
+#### Resources:
+- [Youtube](https://www.youtube.com/watch?v=mwvmfl8nN_U)
+
+#### Take aways:
+- Focus on solving a problem rather than building stuff.
+- Value of newbies (juniors) is great, when it comes to testing, documentation, and user experience.
+- Reduce ambiguity in your code, API, and documentation.
+- Write good documentation (Documentation Driven Development).
+- Premature abstraction is as dangerous as premature optimization.
+- Cake vs. Puppy PR: Cake PR is one-time review effort, Puppy PR is an ongoing maintenance effort.
+- Your attention is valuable, Not everything deserves your attention.
+
+
 ### Talk: [Teamwork makes the dream work](https://ep2025.europython.eu/session/teamwork-makes-the-dream-work)
 
-Resources: 
+#### Resources: 
 - [Slides](https://preludetech.github.io/pres-teamwork-europy-2025/)
 - [The culture map book](https://www.bol.com/nl/nl/f/culture-map/9300000110083228/): Decoding How People Think, Lead, and Get Things Done Across Cultures.
 - [Nonviolent communication](https://www.amazon.nl/-/en/Marshall-B-Rosenberg-PhD/dp/189200528X): Life-Changing Tools for Healthy Relationships
 - [On measuring software development productivity](https://www.youtube.com/watch?v=yuUBZ1pByzM)
 - [On feedback cycles](https://www.youtube.com/watch?v=Oip7ufMm2Vk)
 
-Thoughts and take aways:
+#### Thoughts and take aways:
 - What does good teamwork mean to you?
 - Softwate development is a team sport.
     - Skilfully pass the ball and set the next person up for success.
@@ -110,13 +155,13 @@ Thoughts and take aways:
 
 ### Talk: [How to deal with toxic people](https://ep2025.europython.eu/session/how-to-deal-with-toxic-people)
 
-Resources:
+#### Resources:
 - [Slides](Assets/talks/toxic_people.pdf)
 - [Burn out by Emily & Amelia Nagoski](https://www.amazon.nl/Burnout-Secret-Unlocking-Stress-Cycle/dp/1984818325)
 - [Why zebras don't get ulcers by Robert Sapolsky](https://www.amazon.nl/Zebras-Dont-Ulcers-Revised-Updated/dp/0805073698/)
 - [The social contract of open source by Brett Cannon](https://snarky.ca/the-social-contract-of-open-source/)
 
-Take aways:
+#### Take aways:
 - Understand the types of toxic feedback:
     - Entitlement: "Why is my problem not solved?"
     - Frustration: "Thanks for nothing!"
@@ -134,13 +179,13 @@ Take aways:
 
 ### Talk: [Design Pressure: The Invisible Hand That Shapes Your Code](https://ep2025.europython.eu/session/design-pressure-the-invisible-hand-that-shapes-your-code)
 
-Resources:
+#### Resources:
 - [Slides](https://speakerdeck.com/hynek/design-pressure)
 - [Blog post by the speaker](https://www.youtube.com/watch?v=IhNSINolcSM&t=2s)
 - [PyCon US 2025 version of the talk](https://www.youtube.com/watch?v=IhNSINolcSM)
 - [The rising sea (by Mathew Drury) / The harbor coding problem](https://www.youtube.com/watch?v=AkBWb1fK6R8)
 
-Take aways:
+#### Take aways:
 - Two pieces of code are coupled if they can only be understood by looking at both.
 - Testable code is better code.
 - The shape of your code should NOT be determined by the shape of your data.
@@ -161,48 +206,20 @@ Take aways:
     - It should be clean, flexible, and easy to change.
 - Complexity is not about how many keys I have to press – it’s about how difficult it is to reason about the consequences of what I’m doing.
 
-### Keynote: [Why it took 4 years to get a lock files specification](https://ep2025.europython.eu/session/why-it-took-4-years-to-get-a-lock-files-specification) by Brett Cannon
-
-Resource: 
-- [Slides](https://opensource.snarky.ca/Talks/2025/EuroPython/Slides)
-- [PEP 751 – A file format to record Python dependencies for installation reproducibility](https://peps.python.org/pep-0751/)
-- [pylock.toml standard](https://packaging.python.org/en/latest/specifications/pylock-toml/)
-
-Thoughts and take aways:
-#### Packaging and distribution
-- Source distribution (sdist) is the source code of your project. Its format is:
-    {project-name}-{version}.tar.gz
-- Wheel distribution (wheel) also contains the source code, but bunch of metadata and compiled files. It's a zip file that gets copied "as is" to the environment. Its format is:
-    {project-name}-{version}-{python-tag}-{abi-tag}-{platform-tag}.whl
-- Please, please, please always include wheel distribution in your releases when pushing to PyPI.
-#### Pyproject.toml
-- pyproject.toml should at least contain:
-    - [project] section with:
-        - name
-        - version
-    - [build-system] section with:
-        - requires
-        - build-backend
-- Don't do upperbounds on your dependencies in pyproject.toml, unless you have a very good reason to do so.
-- Use environment markers to specify dependencies for different environments (e.g. for older Python versions).
-#### Lock file
-- You can have pylock.*.toml file for different purposes, e.g. one for all the newest versions of your dependencies and one for all the oldest versions of your dependencies.
-- uv can both create and install from pylock.toml files.
-
 
 ### Talk: [Intuition vs. Reality: Surprising Truths in Python Performance](https://ep2025.europython.eu/session/intuition-vs-reality-surprising-truths-in-python-performance)
 
-Resources:
+#### Resources:
 - [Slides](https://ahaslides.com/codspeed)
 
-Thoughts and take aways:
+#### Thoughts and take aways:
 - Performance matters, because:
     - Cost savings
     - Sustainability
     - User experience and adoption
     - Competitive advantage
 
-Lessons learned:
+#### Lessons learned:
 Below we handle a series of cases with the same question: Which one is faster?
 
 - ➕ First case, sum(generator) vs len(list comprehension):
@@ -263,47 +280,85 @@ Below we handle a series of cases with the same question: Which one is faster?
 
     - Answer: This is much faster, because we avoid the O(n) conversion to Vec and only access the elements directly from memory. So the Rust version is much faster.
 
-Interesting tool:
+#### Interesting tool:
 - [p99](p99.chat) a free performance analysis tool in the browser.
 
 
 ### Talk: [Running every street in Paris with Python and PostGIS](https://ep2025.europython.eu/session/running-every-street-in-paris-with-python-and-postgis)
-#TODO
+Interesting talk about processing geographic data.
 
+#### Resources:
+- [Slides](https://github.com/vinayak-mehta/2025-europython)
+
+#### Interesting tools:
+- [Open street map](https://www.openstreetmap.org/)
+    OpenStreetMap (abbreviated OSM) is a free, open map database updated and maintained by a community of volunteers via open collaboration.
+- [PostGIS](https://postgis.net/)
+    PostGIS is a spatial database extender for PostgreSQL object-relational database. It adds support for geographic objects allowing location queries to be run in SQL.
+- [GeoAlchemy 2](https://geoalchemy-2.readthedocs.io/en/latest/)
+    GeoAlchemy 2 is an extension of SQLAlchemy for working with spatial databases.
+- [gpxpy](https://pypi.org/project/gpxpy/)
+    A Python library for parsing and manipulating GPX files. GPX (GPS Exchange Format) is an XML schema designed for transferring GPS data between applications and web services on the internet.
+- [Folium](https://python-visualization.github.io/folium/latest/#)
+    Folium is a Python library used for visualizing geospatial data. It builds on the data wrangling strengths of the Python ecosystem and the mapping strengths of the Leaflet.js library.
 
 ### Talk: [Choosing Between Free Threading and Async](https://ep2025.europython.eu/session/choosing-between-free-threading-and-async)
-#TODO
+Nice talk about the pros and cons of threading vs async in the context of free threaded Python.
+
+#### Take aways:
+- Use sync when:
+    - One CPU is enough
+    - Responsiveness doesn't matter
+- Use Async when:
+    - One CPU is enough
+    - Responsiveness matters
+- Use Threading when:
+    - One CPU core is not enough and the GIL is disabled
+    - Or when you have blocking I/O tasks
 
 ### Talk: [Performance improvements in 3.14 and maybe 3.15](https://ep2025.europython.eu/session/performance-improvements-in-3-14-and-maybe-3-15) by Mark Shannon
-#TODO
+Advanced talk on the performance improvements in Python 3.14 and 3.15.
+![Benchmark](Assets/talks/benchmark.png)
+
+Resources:
+- [Benchmarks](https://github.com/faster-cpython/benchmarking-public/tree/main/profiling)
+
 
 
 ### Talk: [Continuous Documentation: basics and advanced techniques](https://ep2025.europython.eu/session/continuous-documentation-basics-and-advanced-techniques)
 #TODO
 
 
-### Keynote: [Behind the scenes of FastAPI and friends for developers and builders](https://ep2025.europython.eu/session/behind-the-scenes-of-fastapi-and-friends-for-developers-and-builders)
-#TODO
 
 ### Talk: [What comes after Rust in the Python ecosystem?](https://ep2025.europython.eu/session/what-comes-after-rust-in-the-python-ecosystem)
+
+#### Resources:
+- [Slides](https://github.com/cmaureir/europython2025)
+
 #TODO
 
 
 ### Talk: [What does = do?](https://ep2025.europython.eu/session/what-does-do)
-#TODO
+
+#### Resources:
+- [Slides](https://speakerdeck.com/reuven/what-does-equals-do-talk-from-euro-python-2025)
+
 
 ### Talk: [When in practice is Python performance an issue? Facts and myths.](https://ep2025.europython.eu/session/when-in-practice-is-python-performance-an-issue-facts-and-myths)
 #TODO
 
+
 ### Talk: [Broken __slots__ are a silent performance killer—Let's fix them!](https://ep2025.europython.eu/session/broken-slots-are-a-silent-performance-killer-let-s-fix-them)
 #TODO
+
+#### Resources:
+- [Slides](Assets/talks/__slots__.pdf)
+
 
 ## Cool talks to check out later:
 ### [Let's talk: Communication & Consensus Building in Open-Source](https://ep2025.europython.eu/session/let-s-talk-communication-consensus-building-in-open-source)
 Amazing talk about organizing (open source) projects, governance, and communication.
 - [Slides](https://euro2025.thath.net/)
-
-
 
 
 ## Lightning Talks
@@ -318,13 +373,11 @@ Amazing talk about organizing (open source) projects, governance, and communicat
 - It's Py (Pie) P (Pee) I (Eye) 😋
 
 
-
-
 ## Sessions
 
 ### Session: [AI discussion panel](https://ep2025.europython.eu/session/ai-discussion-panel)
 
-Key take aways:
+#### Key take aways:
 - AI is a tool, not a replacement for human creativity.
 - No AI expert can predict the future. Stop forecasting and definitely stop panicking.
 
@@ -333,9 +386,17 @@ Key take aways:
 #TODO
 
 ## "Python: the Documentary"
-#TODO
+This is the story of the world's most beloved programming language: Python. What began as a side project in Amsterdam during the 1990s became the software powering artificial intelligence, data science and some of the world’s biggest companies. But Python's future wasn't certain; at one point it almost disappeared.
 
+This 90-minute documentary features Guido van Rossum, Travis Oliphant, Barry Warsaw, and many more, and they tell the story of Python’s rise, its community-driven evolution, the conflicts that almost tore it apart, and the language’s impact on... well… everything. 
 
+Resources:
+- [The Documentary](https://www.youtube.com/watch?v=GfH4QL4VqJ0)
+- [Q & A](https://www.youtube.com/watch?v=Sf2AqQ5a38Y)
+
+#### Key take aways:
+- Transition from Python 2 to Python 3 was very painful: This illustrates the importance of understanding the current ecosystem and the impact of changes on existing users in all digital transitions. Tansition can mean discarding a lot of legacy tools which were made with huge effort and now suddenly are obsolete.
+- The importance of inclusivity and community: Python's success is largely due to its welcoming and inclusive community. This highlights the importance of fostering a positive and supportive environment in any community or organization.
 
 ## Fun Insights & Highlights
 
