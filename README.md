@@ -367,6 +367,9 @@ Interesting talk about the importance of documentation, different types of docum
 #### Resources:
 - [Slides](https://speakerdeck.com/reuven/what-does-equals-do-talk-from-euro-python-2025)
 
+#### Take aways:
+
+
 
 ### Talk: [When in practice is Python performance an issue? Facts and myths.](https://ep2025.europython.eu/session/when-in-practice-is-python-performance-an-issue-facts-and-myths)
 Eye opening talk about performance myths in Python.
@@ -384,11 +387,24 @@ Eye opening talk about performance myths in Python.
     - pyinstrument: `pyinstrument -r html tests/test_module.py` plus some additions to the test code.
 
 
-### Talk: [Broken __slots__ are a silent performance killer—Let's fix them!](https://ep2025.europython.eu/session/broken-slots-are-a-silent-performance-killer-let-s-fix-them)
-#TODO
+### Talk: [Broken \_\_slots__ are a silent performance killer - Let's fix them!](https://ep2025.europython.eu/session/broken-slots-are-a-silent-performance-killer-let-s-fix-them)
+`__slots__` are a double-edged sword. While they promise a leaner memory footprint and faster attribute access, they can silently backfire, creating performance pitfalls in your code.
 
 #### Resources:
 - [Slides](Assets/talks/__slots__.pdf)
+
+#### Take aways:
+- While Python classes without `__slots__` have a `__dict__` to store attributes, in classes with `__slots__` attributes live in a pre-allocated fixed array attached to the object, determined at class creation time. There are no `__dict__` when using `__slots__`.
+- This affects the size of the object in memory, and also how attributes are accessed. The impact is more pronounced in large collections of objects.
+- Since Python 3.11, the memory saving benefit is reduced.
+- Pitfalls:
+    - unused (and duplicate) slots still take memory.
+    - inheritance can lead to unexpected memory bloat. Inheriting from a class with `__slots__` adds its slots to the child class, even if they are not used.
+- Broken `__slots__`:
+    - Defining `__slots__` in a class that inherits from a class without `__slots__` adds a `__dict__` to the child class, negating the memory savings. Solution: add `__slots__ = ()` to the parent class.
+    - To check the slots of a class manually, use `MyClass.__dict__["__slots__"]`.
+- Pro tip:
+    - Use [`slotscheck`](https://pypi.org/project/slotscheck/) to find broken `__slots__` in your codebase. `pip install slotscheck` and then `slotscheck -m path/to/your/code`.
 
 
 ## Cool talks to check out later: 🌟
