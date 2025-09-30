@@ -1,11 +1,11 @@
 # EuroPython2025
 My narrative of EuroPython 2025 in Prague
 
-## General
+## General 🧭
 - Link to the website: [EuroPython 2025](https://ep2025.europython.eu/)
 
 
-## Workshops
+## Workshops 🛠️
 ### [Workshop 1: Rambo Python](https://ep2025.europython.eu/session/rambo-python)
 
 
@@ -23,7 +23,6 @@ Got to play with streamlit a bit, which was fun.
 ### [Workshop 2: GIL-free Python and the GPU](https://ep2025.europython.eu/session/gil-free-python-and-the-gpu-hands-on-experience)
 
 Course material: https://learn.nvidia.com/dli-event
-(Code: EUROPYTHON_GILFRPY_JUL25)
 
 See the jupyter notebooks:  [no_gil_gpu.ipynb](Assets/ws2/no_gil_gpu.ipynb)
 
@@ -52,7 +51,7 @@ An interesting workshop on how to prepare a talk for EuroPython or any other con
 Also prepared and presented a lightning talk for the first time, which was a fun experience.
 
 
-## Talks
+## Talks 🎤
 
 Here are some of the interesting talks I attended:
 
@@ -86,6 +85,7 @@ tools, triage process, testing, and more.](http://devguide.python.org)
 
 #### Resources:
 - [Slides](https://opensource.snarky.ca/Talks/2025/EuroPython/Slides)
+- [Youtube](https://www.youtube.com/watch?v=MMVVboVL5eU)
 - [PEP 751 – A file format to record Python dependencies for installation reproducibility](https://peps.python.org/pep-0751/)
 - [pylock.toml standard](https://packaging.python.org/en/latest/specifications/pylock-toml/)
 
@@ -326,8 +326,20 @@ Resources:
 
 
 ### Talk: [Continuous Documentation: basics and advanced techniques](https://ep2025.europython.eu/session/continuous-documentation-basics-and-advanced-techniques)
-#TODO
+Interesting talk about the importance of documentation, different types of documentation, and how to write and maintain good documentation.
 
+![Why?](Assets/talks/documentation_1.png)
+
+#### Take aways:
+- Goal oriented approach:
+    - How to guides
+- Learning oriented approach:
+    - Tutorials
+- Understanding oriented approach:
+    - Explanations
+- Information oriented approach:
+    - References
+- Tip: Make updating the documentation part of your workflow on CI/CD.
 
 
 ### Talk: [What comes after Rust in the Python ecosystem?](https://ep2025.europython.eu/session/what-comes-after-rust-in-the-python-ecosystem)
@@ -346,6 +358,7 @@ Resources:
 
 ### Talk: [When in practice is Python performance an issue? Facts and myths.](https://ep2025.europython.eu/session/when-in-practice-is-python-performance-an-issue-facts-and-myths)
 #TODO
+- [Slides](Assets/talks/perf_python_eng_europython_compressed.pdf)
 
 
 ### Talk: [Broken __slots__ are a silent performance killer—Let's fix them!](https://ep2025.europython.eu/session/broken-slots-are-a-silent-performance-killer-let-s-fix-them)
@@ -355,14 +368,23 @@ Resources:
 - [Slides](Assets/talks/__slots__.pdf)
 
 
-## Cool talks to check out later:
+## Cool talks to check out later: 🌟
 ### [Let's talk: Communication & Consensus Building in Open-Source](https://ep2025.europython.eu/session/let-s-talk-communication-consensus-building-in-open-source)
 Amazing talk about organizing (open source) projects, governance, and communication.
 - [Slides](https://euro2025.thath.net/)
 
 
-## Lightning Talks
-### Lightnig talk: How to say "No" more easily:
+### [Fearless Automation that Runs Anywhere with Python](https://ep2025.europython.eu/session/fearless-automation-that-runs-anywhere-with-python)
+Amazing talk about automation with CI/CD and Python.
+- [Slides](Assets/talks/Fearless-Automation-that-runs-anywhere.pdf)
+
+
+### [A tour of the module `itertools`](https://ep2025.europython.eu/session/a-tour-of-the-module-itertools)
+Interesting talk by a fun speaker, Rodrigo Girão Serrão.
+- [Slides](Assets/talks/slides_A_tour_of_the_module_itertools_compressed.pdf)
+
+## Lightning Talks ⚡️
+### Lightning talk: How to say "No" more easily:
 - Rule#1: Don't say "Yes" unless it's been 24 hours since the request.
 - Rule#2: Estimate the time, energy and the cost. Then multiply it by 4. Alternatively: make an optimistic estimate, make a pessimistic estimate, then sum them up!
 - Rule#3: Future you is gonna be at least as busy as present you.
@@ -373,7 +395,7 @@ Amazing talk about organizing (open source) projects, governance, and communicat
 - It's Py (Pie) P (Pee) I (Eye) 😋
 
 
-## Sessions
+## Sessions 🗓️
 
 ### Session: [AI discussion panel](https://ep2025.europython.eu/session/ai-discussion-panel)
 
@@ -385,7 +407,7 @@ Amazing talk about organizing (open source) projects, governance, and communicat
 ### Session: [CPython Core Development Panel](https://ep2025.europython.eu/session/cpython-core-development-panel)
 #TODO
 
-## "Python: the Documentary"
+## "Python: the Documentary" 🎬
 This is the story of the world's most beloved programming language: Python. What began as a side project in Amsterdam during the 1990s became the software powering artificial intelligence, data science and some of the world’s biggest companies. But Python's future wasn't certain; at one point it almost disappeared.
 
 This 90-minute documentary features Guido van Rossum, Travis Oliphant, Barry Warsaw, and many more, and they tell the story of Python’s rise, its community-driven evolution, the conflicts that almost tore it apart, and the language’s impact on... well… everything. 
@@ -398,14 +420,15 @@ Resources:
 - Transition from Python 2 to Python 3 was very painful: This illustrates the importance of understanding the current ecosystem and the impact of changes on existing users in all digital transitions. Tansition can mean discarding a lot of legacy tools which were made with huge effort and now suddenly are obsolete.
 - The importance of inclusivity and community: Python's success is largely due to its welcoming and inclusive community. This highlights the importance of fostering a positive and supportive environment in any community or organization.
 
-## Fun Insights & Highlights
+## Fun Insights & Highlights 🎉
 
-[Take the Python Quiz](https://mathspp.com/blog/python-quiz-europython-2025-edition)
+#### [Take the Python Quiz](https://mathspp.com/blog/python-quiz-europython-2025-edition)
 
-The Pac-Man rule
+
+#### The Pac-Man rule
 
 ![The Pac-Man Rule](Assets/Other%20resources/the-pac-man-rule.png)
 
-### Intereseting tools:
+### Interesting tools:
 - [Mermaid](https://mermaid.js.org/): A powerful tool to create diagrams and visualizations using text.
 - [Obsidian](https://obsidian.md/): A powerful note-taking app that uses markdown files.
