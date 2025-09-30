@@ -357,8 +357,19 @@ Interesting talk about the importance of documentation, different types of docum
 
 
 ### Talk: [When in practice is Python performance an issue? Facts and myths.](https://ep2025.europython.eu/session/when-in-practice-is-python-performance-an-issue-facts-and-myths)
-#TODO
+Eye opening talk about performance myths in Python.
 - [Slides](Assets/talks/perf_python_eng_europython_compressed.pdf)
+
+### Take aways:
+- Intuition is often wrong. Imaginary knowledge leads to imaginary improvements.
+- Measure, don't guess. Act on data, not on hunches.
+- We could rely on known datastructures for performance (e.g. dict, list, set), but even then we should measure.
+- Being aware of the impact of the code being optimized on the overall performance is crucial. Do not try to solve a micro problem that would lead to a micro benefit.
+- Useful tools to profile the code or the tests:
+    - cProfile: `python -m cProfile -o output.prof $(which pytest) tests/test_module.py`
+    - timeit: `python -m timeit -s "import test_module" "test_module.some_function()"`
+    - snakeviz: `snakeviz output.prof`
+    - pyinstrument: `pyinstrument -r html tests/test_module.py` plus some additions to the test code.
 
 
 ### Talk: [Broken __slots__ are a silent performance killer—Let's fix them!](https://ep2025.europython.eu/session/broken-slots-are-a-silent-performance-killer-let-s-fix-them)
