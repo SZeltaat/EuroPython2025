@@ -354,23 +354,6 @@ Interesting talk about the importance of documentation, different types of docum
 - Tip: Make updating the documentation part of your workflow on CI/CD.
 
 
-### Talk: [What comes after Rust in the Python ecosystem?](https://ep2025.europython.eu/session/what-comes-after-rust-in-the-python-ecosystem)
-
-#### Resources:
-- [Slides](https://github.com/cmaureir/europython2025)
-
-#TODO
-
-
-### Talk: [What does = do?](https://ep2025.europython.eu/session/what-does-do)
-
-#### Resources:
-- [Slides](https://speakerdeck.com/reuven/what-does-equals-do-talk-from-euro-python-2025)
-
-#### Take aways:
-
-
-
 ### Talk: [When in practice is Python performance an issue? Facts and myths.](https://ep2025.europython.eu/session/when-in-practice-is-python-performance-an-issue-facts-and-myths)
 Eye opening talk about performance myths in Python.
 - [Slides](Assets/talks/perf_python_eng_europython_compressed.pdf)
@@ -422,6 +405,19 @@ Amazing talk about automation with CI/CD and Python.
 Interesting talk by a fun speaker, Rodrigo Girão Serrão.
 - [Slides](Assets/talks/slides_A_tour_of_the_module_itertools_compressed.pdf)
 
+
+### Talk: [What does = do?](https://ep2025.europython.eu/session/what-does-do)
+A deep dive into what really happens when we use an `=` in our code.
+#### Resources:
+- [Slides](https://speakerdeck.com/reuven/what-does-equals-do-talk-from-euro-python-2025)
+
+
+### Talk: [What comes after Rust in the Python ecosystem?](https://ep2025.europython.eu/session/what-comes-after-rust-in-the-python-ecosystem)
+A critical look at the current state of Rust in the Python ecosystem and what could be the next big thing.
+#### Resources:
+- [Slides](https://github.com/cmaureir/europython2025)
+
+
 ## Lightning Talks ⚡️
 ### Lightning talk: How to say "No" more easily:
 - Rule#1: Don't say "Yes" unless it's been 24 hours since the request.
@@ -438,13 +434,28 @@ Interesting talk by a fun speaker, Rodrigo Girão Serrão.
 
 ### Session: [AI discussion panel](https://ep2025.europython.eu/session/ai-discussion-panel)
 
+- [Youtube](https://www.youtube.com/watch?v=oAHBYt6eOmA)
+
 #### Key take aways:
 - AI is a tool, not a replacement for human creativity.
 - No AI expert can predict the future. Stop forecasting and definitely stop panicking.
 
 
 ### Session: [CPython Core Development Panel](https://ep2025.europython.eu/session/cpython-core-development-panel)
-#TODO
+
+- [Youtube](https://www.youtube.com/watch?v=0j8euKVjirg)
+
+#### Key take aways:
+1. During a request for features to steal from other languages, a member of the audience suggested virtual threads from Java. Mark Shannon responded that he thinks this feature could work well in Python and mentioned that the core team might be "poking at it" in August to see what it would look like.
+2. The host asked Hugo van Kemenade, the release manager for Python 3.14, about potentially changing Python's versioning scheme to a year/month basis. Hugo confirmed that the proposal "was rejected," and the next version is 3.15. Emily Morehouse elaborated, saying the decision was a "plus zero minus zero" kind of thing, noting that one concern was the obscured link between the release year and the end-of-life date, as patches released the next year (e.g., 3.26.1) would still reference the previous release year (3.26).
+3. Brett Cannon shared a rejected PEP that he and Pablo had worked on, which they ultimately withdrew, aiming to get rid of the bare except statement (except:). Brett explained that they proposed this because the bare accept is a "foot gun" that catches BaseException instead of just Exception, but they withdrew the proposal after people got "too scared and upset" about the resulting breaking change.
+4. A user asked about plans for supporting the newly landed t-strings (template strings) in the standard library (such as gettext and logging). The host (Pablo) explained that there is no centralized roadmap, suggesting that whenever a user identifies a place where t-string support is useful, they should let the core developers know. Brett Cannon supported this, mentioning that the adoption of pathlike objects previously happened successfully when someone wrote a PEP defining the standard, and then people implemented it across the standard library.
+5. When asked how to improve the slow PEP discussion process, Brett Cannon offered a "snarky answer," wishing that everyone who comments would actually read the PEPs before offering feedback, as people often comment after only reading the summary, which wastes time. Savannah Bailey added that the Steering Council is still figuring out the process, suggesting that having more regular public discussions (not just asynchronous ones on the internet) might help, drawing inspiration from TC39 (the governing body for JavaScript).
+6. Regarding the fragmentation concerns surrounding different Python types (async, typed, free-threaded), Hugo van Kemenade noted that the free threaded build removed its experimental label in 3.14, urging people to start using and testing it because the current default build will eventually be replaced. The host (Pablo) provided a detail, explaining that the GIL (Global Interpreter Lock) will remain and be reintroduced if a C extension that doesn't claim to be free-threaded is loaded.
+7. A user questioned whether Python should specialize for enterprise or data science. Emily Morehouse argued that Python's success is due to its ability to serve all different groups of folks and that they do not want to specialize it, ensuring it remains accessible for education, music making, and complex software like space rockets. Brett Cannon summarized the community's goal by saying that Python should strive to be the "second best at everything," continually ensuring they serve the whole community.
+8. When asked about the feature they introduced that broke the most things, Brett Cannon recalled adding the message attribute to exceptions in 2007, which caused massive breakage because users were already writing that attribute themselves. However, Mark Shannon was declared the "winner" after confessing that his work on the incremental garbage collector introduced an N-squared assert in the debug build, which was misidentified as a major performance regression and resulted in Python 3.13 being delayed for a week.
+9. Following discussions about large breaking changes, a question was asked if the Steering Council had reconsidered introducing Python 4.0. The host (Pablo) responded that they likely don't want a Python 4 because they prefer gradually implementing deprecations rather than having a massive breaking leap. Emily Morehouse agreed, suggesting they are all "just kind of sitting around at the it's going to be three forever".
+10. When asked about their favorite 3.14 feature, Savannah Bailey and Mark Shannon both championed t-strings (template strings), with Mark noting they will "unlock a lot of different ways to use strings". The host (Pablo) selected the fact that Z standard is now in the standard library. Ukash (Lukasz Langa) mentioned adding a new optional parameter to argument parser objects called suggest on error, which is his first non-C feature.
 
 ## "Python: the Documentary" 🎬
 This is the story of the world's most beloved programming language: Python. What began as a side project in Amsterdam during the 1990s became the software powering artificial intelligence, data science and some of the world’s biggest companies. But Python's future wasn't certain; at one point it almost disappeared.
