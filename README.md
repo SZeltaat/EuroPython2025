@@ -51,9 +51,8 @@ An interesting workshop on how to prepare a talk for EuroPython or any other con
 Also prepared and presented a lightning talk for the first time, which was a fun experience.
 
 
-## Talks 🎤
+## Keynotes 🏆
 
-Here are some of the interesting talks I attended:
 
 ### Keynote: [You don’t have to be a compiler engineer to work on Python](https://ep2025.europython.eu/session/you-dont-have-to-be-a-compiler-engineer-to-work-on-python) by Savannah Bailey
 
@@ -124,6 +123,10 @@ This is a must watch! Every minute of it is gold 🪙
 - Premature abstraction is as dangerous as premature optimization.
 - Cake vs. Puppy PR: Cake PR is one-time review effort, Puppy PR is an ongoing maintenance effort.
 - Your attention is valuable, Not everything deserves your attention.
+
+
+## Talks 🎤
+Here are some of the interesting talks I attended:
 
 
 ### Talk: [Teamwork makes the dream work](https://ep2025.europython.eu/session/teamwork-makes-the-dream-work)
@@ -318,27 +321,36 @@ Nice talk about the pros and cons of threading vs async in the context of free t
 
 ### Talk: [Performance improvements in 3.14 and maybe 3.15](https://ep2025.europython.eu/session/performance-improvements-in-3-14-and-maybe-3-15) by Mark Shannon
 Advanced talk on the performance improvements in Python 3.14 and 3.15.
-![Benchmark](Assets/talks/benchmark.png)
 
 Resources:
 - [Benchmarks](https://github.com/faster-cpython/benchmarking-public/tree/main/profiling)
 
+### Take aways:
+- Areas of improvement [(See the Benchmark here)](Assets/talks/benchmark.png):
+    - Interpreter: 20%
+    - JIT: 9%
+    - Memory allocation/deallocation: 12%
+    - Cycle GC: 12%
+    - Lookup and dynamic: 15%
+    - Other: 32%
 
 
 ### Talk: [Continuous Documentation: basics and advanced techniques](https://ep2025.europython.eu/session/continuous-documentation-basics-and-advanced-techniques)
 Interesting talk about the importance of documentation, different types of documentation, and how to write and maintain good documentation.
 
-![Why?](Assets/talks/documentation_1.png)
+[See why it is important?](https://x.com/AlmorTech/status/1463404432658513930/photo/1)
 
 #### Take aways:
-- Goal oriented approach:
-    - How to guides
-- Learning oriented approach:
-    - Tutorials
-- Understanding oriented approach:
-    - Explanations
-- Information oriented approach:
-    - References
+- Why document?
+    - People forget things
+    - People leave
+    - People join
+    - People change roles
+- Different types of documentation:
+    - Goal oriented approach: How to guides
+    - Learning oriented approach: Tutorials
+    - Understanding oriented approach: Explanations
+    - Information oriented approach: References
 - Tip: Make updating the documentation part of your workflow on CI/CD.
 
 
@@ -436,9 +448,7 @@ Resources:
 #### [Take the Python Quiz](https://mathspp.com/blog/python-quiz-europython-2025-edition)
 
 
-#### The Pac-Man rule
-
-![The Pac-Man Rule](Assets/Other%20resources/the-pac-man-rule.png)
+#### [The Pac-Man Rule](Assets/Other%20resources/the-pac-man-rule.png)
 
 ### Interesting tools:
 - [Mermaid](https://mermaid.js.org/): A powerful tool to create diagrams and visualizations using text.
